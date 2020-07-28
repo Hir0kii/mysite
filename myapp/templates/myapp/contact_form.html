@@ -1,0 +1,13 @@
+{% extends "myapp/index.html" %}
+
+{% block content %}
+  <div id="contact-form">
+    <h1>お問い合わせ</h1>
+    <p>お問い合わせフォームです。</p>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button id="submit-btn" type="submit">送信</button>
+    </form>
+  </div>
+{% endblock %}
