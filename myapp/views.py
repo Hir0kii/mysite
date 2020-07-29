@@ -3,12 +3,14 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 
-from .models import Project
+from .models import Myself, Project
 from .forms import ContactForm
 
 def index(request):
+    myself = Myself.objects
     projects = Project.objects
-    return render(request, 'myapp/index.html', {'projects': projects})
+    context = {'myself': myself, 'projects': projects}
+    return render(request, 'myapp/index.html', context)
 
 
 class ContactFormView(FormView):
